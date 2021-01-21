@@ -227,7 +227,7 @@ export default {
   },
   created: function () {
     let vue = this;
-    fetch("http://localhost:3000/collection/lessons").then((response) => {
+    fetch("https://after-school-server.herokuapp.com/collection/lessons").then((response) => {
       response
         .json()
         .then(function (json) {
@@ -332,7 +332,7 @@ export default {
               availableSpaces: product.availableSpaces,
             };
 
-            fetch(`http://localhost:3000/collection/lessons/${product._id}`, {
+            fetch(`https://after-school-server.herokuapp.com/collection/lessons/${product._id}`, {
               method: "PUT", // set the HTTP method as 'PUT'
               headers: {
                 "Content-Type": "application/json", // set the data type as JSON
@@ -348,7 +348,7 @@ export default {
       });
 
       // set the url to your server and route
-      fetch("http://localhost:3000/collection/orders", {
+      fetch("https://after-school-server.herokuapp.com/collection/orders", {
         method: "POST", // set the HTTP method as 'POST'
         headers: {
           "Content-Type": "application/json", // set the data type as JSON
