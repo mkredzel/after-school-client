@@ -227,16 +227,18 @@ export default {
   },
   created: function () {
     let vue = this;
-    fetch("https://after-school-server.herokuapp.com/collection/lessons").then((response) => {
-      response
-        .json()
-        .then(function (json) {
-          vue.classes = json;
-        })
-        .catch((error) => {
-          alert("Error! " + error.message);
-        });
-    });
+    fetch("https://after-school-server.herokuapp.com/collection/lessons").then(
+      (response) => {
+        response
+          .json()
+          .then(function (json) {
+            vue.classes = json;
+          })
+          .catch((error) => {
+            alert("Error! " + error.message);
+          });
+      }
+    );
   },
   methods: {
     reduce(index) {
@@ -332,13 +334,16 @@ export default {
               availableSpaces: product.availableSpaces,
             };
 
-            fetch(`https://after-school-server.herokuapp.com/collection/lessons/${product._id}`, {
-              method: "PUT", // set the HTTP method as 'PUT'
-              headers: {
-                "Content-Type": "application/json", // set the data type as JSON
-              },
-              body: JSON.stringify(updatedLesson), // need to stringify the JSON object
-            })
+            fetch(
+              `https://after-school-server.herokuapp.com/collection/lessons/${product._id}`,
+              {
+                method: "PUT", // set the HTTP method as 'PUT'
+                headers: {
+                  "Content-Type": "application/json", // set the data type as JSON
+                },
+                body: JSON.stringify(updatedLesson), // need to stringify the JSON object
+              }
+            )
               .then((response) => response.json())
               .then((responseJSON) => {
                 console.log("Success:", responseJSON);
