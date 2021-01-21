@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps');
+
+$font : 'Delius Swash Caps', cursive;
+$font-size:16px;
+$blue : #0a4870;
+$blue2 : #e3ebf1;
+$black: #000;
+$grey : #3f3c3c;
+$grey2 : #f0f0f0;
+$grey3 : #e8e7e7;
+$grey4 : #fdfdfd;
+$bluegrey : #49606e;
+$orange: #0a4870;
+
+
+/*
+################
+  CARDS DISPLAY 
+################
+*/
+@mixin radius($val) {
+  -webkit-border-radius: $val;
+  -moz-border-radius: $val;
+  border-radius: $val;
+}
+
+@mixin cardsOpen() {
+    &::before {
+      background: rgba(10,72,112, 0.6);
+    }
+    .book-container {
+      .content {
+        opacity: 1;
+
+        transform: translateY(0px);
+      }
+    }
+
+    .informations-container {      
+      transform: translateY(0px);
+      .more-information {
+        opacity: 1;
+      }
+    }
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  
+  font-family: $font;
+}
+
+h2{
+  color: #0a4870;
+  font-weight: 500;
+}
+
+ul{
+    display: flex;
+    flex-wrap: wrap;
+
+    list-style: none;
+    padding:0;
+  
+  .booking-card{
+    position: relative;
+    width: 300px;
+    display: flex;
+    flex: 0 0 300px;
+    flex-direction: column;
+    
+    margin: 20px;
+    margin-bottom: 30px;
+    @include radius(10px);
+    
+    overflow: hidden;
+    
+    background-position: center center;
+    background-size: cover;
+    
+    text-align: center;
+    color: $blue;
+    
+    transition: .3s;
+    
+    &::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      
+      background: rgba(10,72,112, 0);
+      
+      transition: .3s;
+    }
+    
+    .book-container {
+      height: 200px;
+      .content {
+        position: relative;
+        opacity: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        
+        transform: translateY(-200px);
+        
+        transition: .3s;
+        
+        .btn {      
+          border: 3px solid white;
+          padding: 10px 15px;
+          
+          background: none;
+          
+          text-transform: uppercase;
+          font-weight: bold;
+          font-size: 1.3em;
+          color: white;
+          
+          cursor: pointer;
+          
+          transition: .3s;
+          
+          &:hover {
+            background: white;
+            
+            border: 0px solid white;
+            
+            color: $blue;
+          }
+        }
+      }
+    }
+    
+    .informations-container{      
+      flex: 1 0 auto;
+      
+      padding: 20px;
+      
+      background: $grey2;
+      
+      transform: translateY(206px);
+      
+      transition: .3s;
+      
+      .title {
+        position: relative;
+        
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        
+        font-weight: bold;
+        font-size: 1.2em;
+        
+        &::after{
+          content: '';
+          
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          
+          height: 3px;
+          width: 50px;
+          
+          margin: auto;
+          
+          background: $blue;
+        }
+      }
+      
+      .price {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        margin-top: 10px;
+        
+        .icon {
+          margin-right: 10px;
+        }
+      }
+      
+      .more-information {
+        opacity: 0;
+        
+        transition: .3s;
+        .info-and-date-container {
+          display: flex;
+
+          .box {
+            flex: 1 0;
+
+            padding: 15px;
+            margin-top: 20px;
+            @include radius(10px);
+
+            background: white;
+
+            font-weight: bold;
+            font-size: 0.9em;
+
+            .icon {
+              margin-bottom: 5px;
+            }
+
+            &.info{
+              color: $orange;
+
+              margin-right: 10px;
+            }
+          }
+        }
+        .disclaimer {
+          margin-top: 20px;
+
+          font-size: 0.8em;
+          color: $grey;
+        }
+      }
+    }
+    
+    &:hover {
+      @include cardsOpen();
+    }
+  }
+}
+
+@media (max-width: 374px) {
+  ul {
+    .booking-card{
+      @include cardsOpen();
+    }
+  }
+}
+
+.credits{
+  display: table;
+  background: $blue;
+  color: white;
+  line-height: 25px;
+  
+  margin: 10px auto;
+  padding: 20px;
+  
+  @include radius(10px);
+  
+  text-align: center;
+  
+  a{
+    color: $blue2;
+  }
+}
+
+/*
+################
+  BODY STYLING 
+################
+*/
+body {
+  height: 100%;
+  background: -webkit-gradient(
+    linear,
+    right top,
+    left top,
+    from(#8942a8),
+    to(#ba382f)
+  );
+}
+
+h1{
+  margin: 10px 20px;
+}
+
+/*
+###################
+  ANIMATED SQUARES
+###################
+*/
+.box-area {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 100%;
+  min-height: 250%;
+  display:inline-block;
+  overflow: hidden;
+}
+
+.box-area li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 55px;
+  height: 25px;
+  background: rgb(199, 153, 153);
+  overflow: hidden;
+  -webkit-animation: animation 40s linear infinite;
+  animation: animate 45s linear infinite;
+  bottom: -120px;
+}
+
+.box-area li:nth-child(1) {
+  left: 86%;
+  width: 80px;
+  height: 80px;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+.box-area li:nth-child(2) {
+  left: 12%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+  -webkit-animation-duration: 20s;
+  animation-duration: 20s;
+}
+
+.box-area li:nth-child(3) {
+  left: 70%;
+  width: 100px;
+  height: 100px;
+  -webkit-animation-delay: 5.5s;
+  animation-delay: 5.5s;
+}
+
+.box-area li:nth-child(4) {
+  left: 42%;
+  width: 150px;
+  height: 150px;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation-duration: 20s;
+  animation-duration: 20s;
+}
+
+.box-area li:nth-child(5) {
+  left: 65%;
+  width: 40px;
+  height: 40px;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+.box-area li:nth-child(6) {
+  left: 15%;
+  width: 110px;
+  height: 110px;
+  -webkit-animation-delay: 3.5s;
+  animation-delay: 3.5s;
+  -webkit-animation-duration: 20s;
+  animation-duration: 20s;
+}
+
+@-webkit-keyframes animate {
+  0% {
+    -webkit-transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-100vh) rotate(360deg);
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+@keyframes animate {
+  0% {
+    -webkit-transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-100vh) rotate(360deg);
+    transform: translateY(-1400px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/*
+####################
+  SEARCHING/SORTING
+####################
+*/
+#searchInput, #sortBy {
+  text-align: center;
+  margin: auto;
+  width: 33%;
+  z-index: 9;
+}
+
+select {
+  cursor: pointer
+}
