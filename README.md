@@ -1,4 +1,4 @@
-# vue-after-school
+# After School
 
 ## Project setup
 ```
