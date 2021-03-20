@@ -1,5 +1,7 @@
 # After School
 
+Client side of the little e-commerce website built with Vue.js
+
 ## Project setup
 ```
 npm install
